@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/info"
+        android:layout_alignParentTop="true"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/buttonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewId"
+        android:layout_toLeftOf="@id/checkboxId"
+        android:layout_alignParentStart="true"
+        android:text="@string/button" />
+
+    <CheckBox
+        android:id="@+id/checkboxId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewId"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@id/imageButtonId"
+        android:layout_alignBottom="@id/buttonId"
+        android:text="@string/checkbox"/>
+
+    <ImageButton
+        android:id="@+id/imageButtonId"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/buttonId"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/flag" />
+
+    <Switch
+        android:id="@+id/switchId"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/imageButtonId"
+        android:layout_below="@id/checkboxId"
+        android:layout_alignParentEnd="true"
+        android:text="@string/switchInfo"/>
+
+    <EditText
+        android:id="@+id/editTextId"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/imageButtonId"
+        android:hint="@string/editText_hint"/>
+</RelativeLayout>
