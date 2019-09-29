@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Android Labs</string>
-    <string name="hello_message">你好世界</string>
-    <string name="button_text">按键</string>
-    <string name="info">看我的 GUI</string>
-    <string name="button">点这里</string>
-    <string name="checkbox">勾这个</string>
-    <string name="switchInfo">开\/关</string>
-    <string name="editText_hint">这里写</string>
+
+    <string name="text_email">书邮件地址:</string>
+    <string name="hint_email">这里写地址</string>
+    <string name="text_password">书密码 </string>
+    <string name="btn_login">登陆</string>
+
+    <string name="profile_title">你的账户</string>
+    <string name="profile_name_text">Y你的名字</string>
+    <string name="profile_name_hint">打名字</string>
+    <string name="profile_email_text">Y你的邮件e</string>
+    <string name="profile_email_hint">打邮件</string>
+    <string name="profile_pic_text">你的照片</string>
+    <string name="profile_btn_text">点按钮去照相</string>
 </resources>
