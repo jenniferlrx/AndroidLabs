@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -42,6 +43,12 @@ public class ProfileActivity extends AppCompatActivity {
 
             });
         Log.e(ACTIVITY_NAME, "In function onCreate" );
+
+        Button chatBtn = findViewById(R.id.profile_chat);
+        chatBtn.setOnClickListener(v->{
+            Intent goChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+            startActivity(goChat);
+        });
 
     }
 
