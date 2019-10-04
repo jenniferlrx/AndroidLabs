@@ -1,18 +1,20 @@
 package com.example.androidlabs;
 
-public class Message {
-    String text;
-    boolean IsSender;
+class Message {
+    private String text;
+    private boolean IsSender;
+    private long id;
 
-    public Message(String s, boolean IsSender){
+    Message(String s, boolean IsSender, long id){
         this.text = s;
         this.IsSender = IsSender;
+        this.id = id;
     }
 
-    public String getText(){
+    String getText(){
         return text;
     }
-    public boolean IsSender(){
+    boolean IsSender(){
         return IsSender;
     }
 }

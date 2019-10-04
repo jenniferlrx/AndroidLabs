@@ -8,38 +8,40 @@
         android:id="@+id/chat_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/btn_receive"
         />
 
 
-    <GridLayout
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:columnCount="3"
-        android:rowCount="1"
+        android:id="@+id/btn_send"
+        android:text="@string/chat_send"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="3"
+        android:hint="@string/chat_hint"
+        android:id="@+id/newText"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btn_send"
+        android:layout_toLeftOf="@+id/btn_receive"
         >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_send"
-            android:text="@string/chat_send"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="3"
-            android:hint="@string/chat_hint"
-            android:id="@+id/newText"
-            >
 
-        </EditText>
+    </EditText>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_receive"
-            android:text="@string/chat_receive"/>
-    </GridLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_receive"
+        android:text="@string/chat_receive"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        />
 
 
 
