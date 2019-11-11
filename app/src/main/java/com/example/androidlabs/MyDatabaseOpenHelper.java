@@ -8,7 +8,7 @@ import android.util.Log;
 public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "MyDatabaseFile";
-    public static final int VERSION_NUM = 4;
+    public static final int VERSION_NUM = 5;
     public static final String TABLE_NAME = "Messages";
     public static final String COL_ID = "id";
     public static final String COL_ISSENDER = "isSender";

@@ -15,6 +15,7 @@
     <string name="profile_btn_text">Click the button above to take a picture</string>
     <string name="profile_btn_chat">Go to chat</string>
 
+    <string name="profile_btn_weather">check weather</string>
     <string name="chat_receive">Receive</string>
     <string name="chat_send">Send</string>
     <string name="chat_hint">Type here</string>
