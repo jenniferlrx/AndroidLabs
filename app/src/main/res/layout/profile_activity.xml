@@ -64,4 +64,11 @@
         android:id="@+id/profile_weather"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_btn_toolbar"
+        android:id="@+id/profile_toolbar"
+        />
+
 </LinearLayout>

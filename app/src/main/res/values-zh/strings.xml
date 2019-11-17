@@ -17,6 +17,7 @@
     <string name="profile_btn_chat">去聊天</string>
 
     <string name="profile_btn_weather">天气</string>
+    <string name="profile_btn_toolbar">菜单</string>
 
     <string name="chat_receive">接受</string>
     <string name="chat_send">发送</string>
