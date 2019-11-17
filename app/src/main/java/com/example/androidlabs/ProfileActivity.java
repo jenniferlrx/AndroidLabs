@@ -42,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
                 }
 
             });
-        Log.e(ACTIVITY_NAME, "In function onCreate" );
+        Log.i(ACTIVITY_NAME, "In function onCreate" );
 
         Button chatBtn = findViewById(R.id.profile_chat);
         chatBtn.setOnClickListener(v->{
@@ -62,31 +62,31 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(ACTIVITY_NAME, "In function onStart" );
+        Log.i(ACTIVITY_NAME, "In function onStart" );
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(ACTIVITY_NAME, "In function onResume" );
+        Log.i(ACTIVITY_NAME, "In function onResume" );
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(ACTIVITY_NAME, "In function onPause" );
+        Log.i(ACTIVITY_NAME, "In function onPause" );
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e(ACTIVITY_NAME, "In function onStop" );
+        Log.i(ACTIVITY_NAME, "In function onStop" );
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e(ACTIVITY_NAME, "In function onDestroy" );
+        Log.i(ACTIVITY_NAME, "In function onDestroy" );
     }
 
 
@@ -97,7 +97,7 @@ public class ProfileActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mImageButton.setImageBitmap(imageBitmap);
         }
-        Log.e(ACTIVITY_NAME, "In function onActivityResult" );
+        Log.i(ACTIVITY_NAME, "In function onActivityResult" );
     }
 
 }
