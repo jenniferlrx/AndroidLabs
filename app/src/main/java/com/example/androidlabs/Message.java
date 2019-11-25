@@ -14,6 +14,10 @@ class Message {
     String getText(){
         return text;
     }
+
+    long getId(){
+        return id;
+    }
     boolean IsSender(){
         return IsSender;
     }

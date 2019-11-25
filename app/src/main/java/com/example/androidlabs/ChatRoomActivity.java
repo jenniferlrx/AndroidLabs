@@ -3,6 +3,7 @@ package com.example.androidlabs;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,11 +17,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ChatRoomActivity extends AppCompatActivity {
 
     public static final String ACTIVITY_NAME = "ChatRoom_Activity";
+    public static final String MESSAGE_TEXT = "TEXT";
+    public static final String MESSAGE_ID = "ID";
+
+    public static final String MESSAGE_POSITION = "POSITION";
+    public static final String MESSAGE_ISSENT = "ISSENT";
+    public static final int MESSAGE_DETAIL_ACTIVITY = 345;
+    public static SQLiteDatabase db;
 
     ArrayList<Message> messages = new ArrayList<Message>();
 
@@ -33,7 +40,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         //get a database:
         dbOpener = new MyDatabaseOpenHelper(this);
-        SQLiteDatabase db = dbOpener.getWritableDatabase();
+        db = dbOpener.getWritableDatabase();
 
         //query all the results from the database:
         String [] columns = {MyDatabaseOpenHelper.COL_ID, MyDatabaseOpenHelper.COL_ISSENDER, MyDatabaseOpenHelper.COL_MESSAGE};
@@ -63,6 +70,36 @@ public class ChatRoomActivity extends AppCompatActivity {
         Button receive = findViewById(R.id.btn_receive);
         Button send = findViewById(R.id.btn_send);
         EditText newText = findViewById(R.id.newText);
+        boolean isTablet = findViewById(R.id.fragmentLocation) != null;
+
+
+        listView.setOnItemClickListener( (list, item, position, id) -> {
+
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString(MESSAGE_TEXT, messages.get(position).getText() );
+            dataToPass.putInt(MESSAGE_POSITION, position);
+            dataToPass.putLong(MESSAGE_ID, messages.get(position).getId());
+            dataToPass.putBoolean(MESSAGE_ISSENT,messages.get(position).IsSender());
+
+            if(isTablet)
+            {
+                DetailFragment dFragment = new DetailFragment(); //add a DetailFragment
+                dFragment.setArguments( dataToPass ); //pass it a bundle for information
+                dFragment.setTablet(true);  //tell the fragment if it's running on a tablet or not
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                        .addToBackStack("AnyName") //make the back button undo the transaction
+                        .commit(); //actually load the fragment.
+            }
+            else //isPhone
+            {
+                Intent nextActivity = new Intent(ChatRoomActivity.this, MessageDetailActivity.class);
+                nextActivity.putExtras(dataToPass); //send data to next activity
+                startActivityForResult(nextActivity, MESSAGE_DETAIL_ACTIVITY); //make the transition
+            }
+        });
+
 
         receive.setOnClickListener(v->{
             String text = newText.getText().toString();
@@ -149,9 +186,34 @@ public class ChatRoomActivity extends AppCompatActivity {
             //add the new Contact to the array list:
             Log.d(ACTIVITY_NAME, "ID: "+id + "| isSender: "+isSender + "| text: " +message);
         }
-
-
     }
+
+    public void deleteMessageId(long id, int position)
+    {
+        Log.i("Delete this message:" , " id="+id);
+        messages.remove(position);
+        db.delete(MyDatabaseOpenHelper.TABLE_NAME, MyDatabaseOpenHelper.COL_ID+"="+id, null );
+        myAdapter.notifyDataSetChanged();
+    }
+
+
+
+    //This function only gets called on the phone. The tablet never goes to a new activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == MESSAGE_DETAIL_ACTIVITY)
+        {
+            if(resultCode == RESULT_OK) //if you hit the delete button instead of back button
+            {
+                long id = data.getLongExtra(MESSAGE_ID, 0);
+                int position = data.getIntExtra(MESSAGE_POSITION, 0);
+                deleteMessageId(id, position);
+            }
+        }
+    }
+
+
 
     class MyListAdapter extends BaseAdapter{
         @Override
@@ -161,12 +223,12 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         @Override
         public Object getItem(int i) {
-            return messages.get(i).getText();
+            return messages.get(i);
         }
 
         @Override
         public long getItemId(int i) {
-            return i;
+            return messages.get(i).getId();
         }
 
         @Override
@@ -185,5 +247,6 @@ public class ChatRoomActivity extends AppCompatActivity {
             return thisView;
         }
     }
+
 }
 
